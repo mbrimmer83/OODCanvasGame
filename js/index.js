@@ -1,3 +1,16 @@
+class Game {
+  constructor(object) {
+    this.background = object.background;
+    this.canvas = object.canvas;
+    this.canvasContext = object.canvasContext;
+  }
+  startGame() {
+    var canvas = document.getElementById(this.canvas);
+    var ctx = canvas.getContext(this.canvasContext);
+  }
+}
+
+
 class Player {
   constructor(xPosition, yPosition, dirX, dirY, speed) {
     this.xPosition = xPosition;
@@ -6,44 +19,43 @@ class Player {
     this.dirY = dirY;
     this.speed = speed;
   }
+
   movementListners() {
+    var self = this;
     window.addEventListener('keydown', function(e) {
-      console.log(this.xPosition);
       var key = e.keyCode;
       if (key === 37) { // left
-        this.xPosition = 1;
-        console.log("Left key is down");
+        self.xPosition = 1;
       }
       if (key === 39) { // right
-        this.xPosition = -1;
+        self.xPosition = -1;
       }
       if (key === 38) { // up
-        this.yPosition = 1;
+        self.yPosition = 1;
       }
       if (key === 40) { // down
-        this.yPosition = -1;
+        self.yPosition = -1;
       }
     });
     window.addEventListener('keyup', function(e) {
-      console.log("event listener added");
       var key = e.keyCode;
       if (key === 37) { // left
-        this.xPosition = 0;
+        self.xPosition = 0;
       }
       if (key === 39) { // right
-        this.xPosition = 0;
+        self.xPosition = 0;
       }
       if (key === 38) { // up
-        this.yPosition = 0;
+        self.yPosition = 0;
       }
       if (key === 40) { // down
-        this.yPosition = 0;
+        self.yPosition = 0;
       }
     });
     window.addEventListener('keydown', function(e) {
       var key = e.keyCode;
       if (key === 32) {
-        this.fire();
+        self.fire();
       }
     })
   }
@@ -59,28 +71,25 @@ class Player {
     }
   }
   fire() {
-    console.log("Fire");
-  }
-  playerImage() {
-    playerImage = new Image();
-    playerImage.src = this.imageUrl;
+    new Bullet(this.dirX, this.dirY, 10, 10, 10000);
   }
 }
 
-var hero = new Player(200, 200, 0 , 0, 2);
-console.log(hero);
-
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
-var heroImage = new Image();
-heroImage.src = "images/hero.png";
-hero.movementListners();
-
-function main() {
-  ctx.beginPath();
-  hero.move();
-  ctx.drawImage(heroImage, hero.dirX, hero.dirY, 25, 25);
-  requestAnimationFrame(main);
-
+class Bullet {
+  constructor(startX, startY, speed, direction, lifeLength) {
+    this.startX = startX;
+    this.startY = startY;
+    this.speed = speed;
+    this.direction = direction;
+    this.lifeLength = lifeLength;
+    this.createBullet();
+  }
+  createBullet() {
+    console.log("A new Bullet was created!");
+  }
 }
-main();
+class Bomb {
+  constructor() {
+
+  }
+}

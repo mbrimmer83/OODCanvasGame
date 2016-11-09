@@ -13,5 +13,31 @@
 
     <!-- Scripts -->
     <script src="js/index.js"></script>
+    <script>
+    var hero = new Player(200, 200, 0 , 0, 2);
+    console.log(hero);
+
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+    var herobackground = new Image();
+    herobackground.src = '../canvasgame/images/background.png';
+
+
+    var heroImage = new Image();
+    heroImage.src = "images/hero.png";
+    hero.movementListners();
+
+    function main() {
+      ctx.beginPath();
+      ctx.drawImage(herobackground, 0, 0, 1200, 800);
+      hero.move();
+      ctx.drawImage(heroImage, hero.dirX, hero.dirY, 25, 25);
+      ctx.fill();
+      requestAnimationFrame(main);
+
+    }
+    main();
+    </script>
   </body>
 </html>
