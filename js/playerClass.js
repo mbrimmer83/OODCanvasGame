@@ -13,7 +13,7 @@ class Player {
     return playerImage;
   }
 
-  movementListners() {
+  keyBoardMovementListners() {
     var self = this;
     window.addEventListener('keydown', function(e) {
       var key = e.keyCode;
@@ -51,6 +51,20 @@ class Player {
         self.fire();
       }
     })
+  }
+  mouseEventListener() {
+    var self = this;
+    var canvas = document.getElementById('canvas');
+    canvas.addEventListener('mousemove', function(event) {
+      var mousePosition = self.getMousePoition(canvas, event);
+    });
+  }
+  getMousePoition() {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.right
+    }
   }
   move() {
     if (this.xPosition === 1) {

@@ -43,7 +43,8 @@
     var herobackground = game.setBackground();
     //Set the hero image variable and add event listeners.
     var heroImage = hero.playerImage();
-    hero.movementListners();
+    hero.keyBoardMovementListners();
+    hero.mouseEventListener();
 
     function main() {
       ctx.beginPath();
