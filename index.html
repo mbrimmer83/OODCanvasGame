@@ -14,18 +14,32 @@
     <!-- Scripts -->
     <script src="js/index.js"></script>
     <script>
-    var hero = new Player(200, 200, 0 , 0, 2);
+
+    // Create new game
+    var game = new Game({
+      backgroundUrl: '../canvasgame/images/background.png',
+      canvas: 'canvas',
+      canvasContext: '2d'
+    });
+    console.log(game);
+
+    // Create new player
+    var hero = new Player({
+      xPosition: 200,
+      yPosition: 200,
+      dirX: 0,
+      dirY: 0,
+      speed: 10,
+      imageUrl: 'images/hero.png'
+    });
     console.log(hero);
 
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
-
-    var herobackground = new Image();
-    herobackground.src = '../canvasgame/images/background.png';
-
-
-    var heroImage = new Image();
-    heroImage.src = "images/hero.png";
+    // Intitalize game
+    var ctx = game.startGame();
+    //Set background of canvas
+    var herobackground = game.setBackground();
+    //Set the hero image variable and add event listeners.
+    var heroImage = hero.playerImage();
     hero.movementListners();
 
     function main() {

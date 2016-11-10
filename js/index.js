@@ -1,23 +1,34 @@
 class Game {
   constructor(object) {
-    this.background = object.background;
+    this.background = object.backgroundUrl;
     this.canvas = object.canvas;
     this.canvasContext = object.canvasContext;
   }
   startGame() {
     var canvas = document.getElementById(this.canvas);
-    var ctx = canvas.getContext(this.canvasContext);
+    return canvas.getContext(this.canvasContext);
+  }
+  setBackground() {
+    var background = new Image();
+    background.src = this.background;
+    return background;
   }
 }
 
 
 class Player {
-  constructor(xPosition, yPosition, dirX, dirY, speed) {
-    this.xPosition = xPosition;
-    this.yPosition = yPosition;
-    this.dirX = dirX;
-    this.dirY = dirY;
-    this.speed = speed;
+  constructor(object) {
+    this.xPosition = object.xPosition;
+    this.yPosition = object.yPosition;
+    this.dirX = object.dirX;
+    this.dirY = object.dirY;
+    this.speed = object.speed;
+    this.imageUrl = object.imageUrl;
+  }
+  playerImage() {
+    var playerImage = new Image();
+    playerImage.src = this.imageUrl;
+    return playerImage;
   }
 
   movementListners() {
