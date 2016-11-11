@@ -30,8 +30,8 @@
     var hero = new Player({
       xPosition: 200,
       yPosition: 200,
-      dirX: 0,
-      dirY: 0,
+      dirX: 50,
+      dirY: 50,
       speed: 10,
       imageUrl: 'images/hero.png'
     });
@@ -46,11 +46,20 @@
     hero.keyBoardMovementListners();
     hero.mouseEventListener();
 
+    //Bullet Image
+    var bulletImage = new Image();
+    bulletImage.src = 'images/bullet.png';
+
     function main() {
       ctx.beginPath();
       ctx.drawImage(herobackground, 0, 0, 1200, 800);
       hero.move();
       ctx.drawImage(heroImage, hero.dirX, hero.dirY, 25, 25);
+      var bullets = hero.drawBullets();
+      // console.log(bullets)
+      bullets.forEach(function(bullet){
+        ctx.drawImage(bulletImage, bullet.currentPositionX, bullet.currentPositionY, 75, 75);
+      });
       ctx.fill();
       requestAnimationFrame(main);
 

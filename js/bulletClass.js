@@ -1,13 +1,32 @@
 class Bullet {
-  constructor(startX, startY, speed, direction, lifeLength) {
-    this.startX = startX;
-    this.startY = startY;
-    this.speed = speed;
-    this.direction = direction;
-    this.lifeLength = lifeLength;
+  constructor(object) {
+    console.log(object);
+    this.startX = object.playerX;
+    this.startY = object.playerY;
+    this.currentPositionX = this.startX;
+    this.currentPositionY = this.startY;
+    this.speed = object.speed;
+    this.mouseCoords = object.mouseCoords
+    this.incrementX;
+    this.incrementY;
     this.createBullet();
   }
   createBullet() {
-    console.log("A new Bullet was created!");
+    var vectorY = (this.mouseCoords.y - this.startY);
+    var vectorX = (this.mouseCoords.x - this.startX);
+    var length = Math.sqrt((vectorX * vectorX) + (vectorY * vectorY));
+    this.incrementX = (vectorX/length) * this.speed;
+    this.incrementY = (vectorY/length) * this.speed;
+  }
+  updateBulletPosition() {
+    this.currentPositionX += this.incrementX;
+    this.currentPositionY += this.incrementY;
+    // if (this.currentPositionX >= 0 && this.currentPositionX <= 1200 && this.currentPositionY >= -1200 && this.currentPositionY <= -400 ) {
+    //   this.currentPositionX += this.incrementX;
+    //   this.currentPositionY += this.incrementY;
+    // }else {
+    //   return false;
+    // }
+
   }
 }

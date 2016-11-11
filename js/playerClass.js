@@ -4,8 +4,10 @@ class Player {
     this.yPosition = object.yPosition;
     this.dirX = object.dirX;
     this.dirY = object.dirY;
-    this.speed = object.speed;
+    this.speed = object.speed || 5;
     this.imageUrl = object.imageUrl;
+    this.lastMousePosition = {};
+    this.currentBullets = [];
   }
   playerImage() {
     var playerImage = new Image();
@@ -57,14 +59,16 @@ class Player {
     var canvas = document.getElementById('canvas');
     canvas.addEventListener('mousemove', function(event) {
       var mousePosition = self.getMousePoition(canvas, event);
+      // console.log(mousePosition);
     });
   }
-  getMousePoition() {
+  getMousePoition(canvas, event) {
     var rect = canvas.getBoundingClientRect();
-    return {
+    this.lastMousePosition = {
       x: event.clientX - rect.left,
-      y: event.clientY - rect.right
+      y: event.clientY - rect.top
     }
+    return this.lastMousePosition
   }
   move() {
     if (this.xPosition === 1) {
@@ -78,6 +82,22 @@ class Player {
     }
   }
   fire() {
-    new Bullet(this.dirX, this.dirY, 10, 10, 10000);
+    var self = this;
+    this.currentBullets.push(new Bullet({
+      playerX: this.dirX,
+      playerY: this.dirY,
+      speed: 10,
+      mouseCoords: this.lastMousePosition
+    }));
+  }
+  drawBullets() {
+    var self = this;
+    this.currentBullets.forEach(function(bullet, idx){
+      // console.log(bullet);
+      if (bullet.updateBulletPosition() === false) {
+        self.currentBullets.splice(idx, 1);
+      }
+    });
+    return this.currentBullets;
   }
 }
