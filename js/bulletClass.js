@@ -1,6 +1,5 @@
 class Bullet {
   constructor(object) {
-    console.log(object);
     this.startX = object.playerX;
     this.startY = object.playerY;
     this.currentPositionX = this.startX;
@@ -19,14 +18,14 @@ class Bullet {
     this.incrementY = (vectorY/length) * this.speed;
   }
   updateBulletPosition() {
-    this.currentPositionX += this.incrementX;
-    this.currentPositionY += this.incrementY;
-    // if (this.currentPositionX >= 0 && this.currentPositionX <= 1200 && this.currentPositionY >= -1200 && this.currentPositionY <= -400 ) {
-    //   this.currentPositionX += this.incrementX;
-    //   this.currentPositionY += this.incrementY;
-    // }else {
-    //   return false;
-    // }
+    // this.currentPositionX += this.incrementX;
+    // this.currentPositionY += this.incrementY;
+    if (this.currentPositionX >= 0 && this.currentPositionX <= 1200 && this.currentPositionY >= 0 && this.currentPositionY <= 800 ) {
+      this.currentPositionX += this.incrementX;
+      this.currentPositionY += this.incrementY;
+    }else {
+      return false;
+    }
 
   }
 }
