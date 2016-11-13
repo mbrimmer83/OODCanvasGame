@@ -19,31 +19,31 @@ class Player {
     var self = this;
     window.addEventListener('keydown', function(e) {
       var key = e.keyCode;
-      if (key === 37) { // left
+      if (key === 37 || key === 65) { // left
         self.xPosition = 1;
       }
-      if (key === 39) { // right
+      if (key === 39 || key === 68) { // right
         self.xPosition = -1;
       }
-      if (key === 38) { // up
+      if (key === 38 || key === 87) { // up
         self.yPosition = 1;
       }
-      if (key === 40) { // down
+      if (key === 40 || key === 83) { // down
         self.yPosition = -1;
       }
     });
     window.addEventListener('keyup', function(e) {
       var key = e.keyCode;
-      if (key === 37) { // left
+      if (key === 37 || key === 65) { // left
         self.xPosition = 0;
       }
-      if (key === 39) { // right
+      if (key === 39 || key === 68) { // right
         self.xPosition = 0;
       }
-      if (key === 38) { // up
+      if (key === 38 || key === 87) { // up
         self.yPosition = 0;
       }
-      if (key === 40) { // down
+      if (key === 40 || key === 83) { // down
         self.yPosition = 0;
       }
     });
