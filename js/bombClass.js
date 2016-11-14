@@ -9,4 +9,12 @@ class Bomb {
     this.incrementX;
     this.incrementY;
   }
+
+  createBomb() {
+
+  }
+
+  updateBombPosition() {
+    
+  }
 }
