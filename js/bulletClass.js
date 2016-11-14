@@ -18,8 +18,6 @@ class Bullet {
     this.incrementY = (vectorY/length) * this.speed;
   }
   updateBulletPosition() {
-    // this.currentPositionX += this.incrementX;
-    // this.currentPositionY += this.incrementY;
     if (this.currentPositionX >= 0 && this.currentPositionX <= 1200 && this.currentPositionY >= 0 && this.currentPositionY <= 800 ) {
       this.currentPositionX += this.incrementX;
       this.currentPositionY += this.incrementY;
