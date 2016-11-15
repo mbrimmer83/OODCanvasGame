@@ -59,7 +59,7 @@ class Player {
     var canvas = document.getElementById('canvas');
     canvas.addEventListener('mousemove', function(event) {
       var mousePosition = self.getMousePoition(canvas, event);
-      // console.log(mousePosition);
+      console.log(mousePosition); 
     });
   }
   getMousePoition(canvas, event) {
@@ -89,6 +89,12 @@ class Player {
       speed: 10,
       mouseCoords: this.lastMousePosition
     }));
+    new Bomb({
+      playerX: this.dirX,
+      playerY: this.dirY,
+      speed: 10,
+      mouseCoords: this.lastMousePosition
+    });
   }
   drawBullets() {
     var self = this;
