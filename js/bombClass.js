@@ -29,7 +29,7 @@ class Bomb {
     var midpointY = (this.mouseCoords.y + this.startY) / 2;
     console.log("Midpoint: ", midpointX, midpointY);
     // Find the vertex angle
-    var hypotonuseLength =  Math.sqrt(((length / 2) * (length / 2)) + ((length / 4) * (length / 4)));
+    var hypotonuseLength =  Math.sqrt(((length / 2) * (length / 2)) + ((length / 8) * (length / 8)));
     console.log(hypotonuseLength);
     var vertexAngleRadians = Math.asin((length / 2) / hypotonuseLength);
     var vertexAngle =  self.toDegrees(vertexAngleRadians)
