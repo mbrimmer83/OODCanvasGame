@@ -27,19 +27,19 @@ class Bomb {
     // Find the midpoint of the line
     var midpointX = (this.mouseCoords.x + this.startX) / 2;
     var midpointY = (this.mouseCoords.y + this.startY) / 2;
-    console.log("Midpoint: ", midpointX, midpointY);
+    // console.log("Midpoint: ", midpointX, midpointY);
     // Find the vertex angle
     var hypotonuseLength =  Math.sqrt(((length / 2) * (length / 2)) + ((length / 8) * (length / 8)));
-    console.log(hypotonuseLength);
+    // console.log(hypotonuseLength);
     var vertexAngleRadians = Math.asin((length / 2) / hypotonuseLength);
     var vertexAngle =  self.toDegrees(vertexAngleRadians)
-    console.log("Vertex angle: ", vertexAngle);
+    // console.log("Vertex angle: ", vertexAngle);
     // Find Theta angle
     var theta = 90 - vertexAngle;
-    console.log("Theta: ", theta);
+    // console.log("Theta: ", theta);
     // Find the vertex coordinate points
     var vertexNumberIntermediate = Math.tan(self.toRadians(theta));
-    console.log(vertexNumberIntermediate);
+    // console.log(vertexNumberIntermediate);
     this.vertexPointX =  midpointX + (vertexNumberIntermediate * (-(this.startY - midpointY)));
     this.vertexPointY =  midpointY + (vertexNumberIntermediate * (-(this.startX - midpointX)));
     console.log("Vertex: ", this.vertexPointX, this.vertexPointY);
