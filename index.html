@@ -60,6 +60,10 @@
       bullets.forEach(function(bullet){
         ctx.drawImage(bulletImage, bullet.currentPositionX, bullet.currentPositionY, 75, 75);
       });
+      var bombs = hero.drawBombs();
+      bombs.forEach(function(bomb){
+        ctx.drawImage(bulletImage, bomb.xt, bomb.yt, 75, 75);
+      });
       ctx.fill();
       requestAnimationFrame(main);
     }

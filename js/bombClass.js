@@ -8,6 +8,10 @@ class Bomb {
     this.mouseCoords = object.mouseCoords
     this.vertexPointX;
     this.vertexPointY;
+    this.t = object.t;
+    this.controlPoints = {}
+    this.xt;
+    this.yt;
     this.createBomb();
   }
   toDegrees(angle) {
@@ -42,11 +46,36 @@ class Bomb {
     // console.log(vertexNumberIntermediate);
     this.vertexPointX =  midpointX + (vertexNumberIntermediate * (-(this.startY - midpointY)));
     this.vertexPointY =  midpointY + (vertexNumberIntermediate * (-(this.startX - midpointX)));
-    console.log("Vertex: ", this.vertexPointX, this.vertexPointY);
+    // Find endpoint of tangent to the curve
+    var endpointTanX = this.mouseCoords.x + (vertexNumberIntermediate * (-(midpointX - this.mouseCoords.x)));
+    var endpointTanY = this.mouseCoords.y + (vertexNumberIntermediate * (-(midpointY - this.mouseCoords.y)));
+    // Find starting point of tangent to the curve
+    var startPointTanX = 2 * this.vertexPointX - endpointTanX;
+    var startPointTanY = 2 * this.vertexPointY - endpointTanY;
+    console.log(startPointTanX, startPointTanY);
+    // Find the first control point
+    this.controlPoints['firstControlPointX'] = (midpointX - (1 - .5) * startPointTanX) / .5;
+    this.controlPoints['firstControlPointY'] = (midpointY - (1 - .5) * startPointTanY) / .5;
+    // Find the second control point
+    this.controlPoints['secondControlPointX'] = (endpointTanX - (1 - .25) * midpointX) / .25;
+    this.controlPoints['secondControlPointY'] = (endpointTanY - (1 - .25) * midpointY) / .25;
+    console.log(this.mouseCoords.x, this.mouseCoords.y);
+    console.log(this.controlPoints);
   }
 
   updateBombPosition() {
-
+    var t = this.t;
+    this.t += this.speed;
+    // Calculate the six Bezier coefficients
+    var cx = 3 * (this.controlPoints.firstControlPointX - this.startX);
+    var bx = 3 * (this.controlPoints.secondControlPointX - this.controlPoints.firstControlPointX) - cx;
+    var ax = this.mouseCoords.x - this.startX - cx - bx;
+    var cy = 3 * (this.controlPoints.firstControlPointY - this.startY);
+    var by = 3 * (this.controlPoints.secondControlPointY - this.controlPoints.firstControlPointY) - cy;
+    var ay = this.mouseCoords.y - this.startY - cy - by;
+    // Update the position of the bomb
+    this.xt = ax * (t * t * t )  + bx * (t * t )  + cx * t   + this.startX;
+    this.yt = ay * (t * t * t )  + by * (t * t )  + cy * t   + this.startY;
   }
 
 }

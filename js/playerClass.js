@@ -8,6 +8,7 @@ class Player {
     this.imageUrl = object.imageUrl;
     this.lastMousePosition = {};
     this.currentBullets = [];
+    this.currentBombs = [];
   }
   playerImage() {
     var playerImage = new Image();
@@ -59,7 +60,7 @@ class Player {
     var canvas = document.getElementById('canvas');
     canvas.addEventListener('mousemove', function(event) {
       var mousePosition = self.getMousePoition(canvas, event);
-      console.log(mousePosition); 
+      // console.log(mousePosition);
     });
   }
   getMousePoition(canvas, event) {
@@ -83,18 +84,19 @@ class Player {
   }
   fire() {
     var self = this;
-    this.currentBullets.push(new Bullet({
+    // this.currentBullets.push(new Bullet({
+    //   playerX: this.dirX,
+    //   playerY: this.dirY,
+    //   speed: 10,
+    //   mouseCoords: this.lastMousePosition
+    // }));
+    this.currentBombs.push(new Bomb({
       playerX: this.dirX,
       playerY: this.dirY,
-      speed: 10,
-      mouseCoords: this.lastMousePosition
+      speed: 0.01,
+      mouseCoords: this.lastMousePosition,
+      t: 0
     }));
-    new Bomb({
-      playerX: this.dirX,
-      playerY: this.dirY,
-      speed: 10,
-      mouseCoords: this.lastMousePosition
-    });
   }
   drawBullets() {
     var self = this;
@@ -105,5 +107,13 @@ class Player {
       }
     });
     return this.currentBullets;
+  }
+
+  drawBombs() {
+    var self = this;
+    this.currentBombs.forEach(function(bomb, idx) {
+      bomb.updateBombPosition();
+    });
+    return this.currentBombs;
   }
 }
