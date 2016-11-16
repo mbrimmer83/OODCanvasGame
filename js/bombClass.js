@@ -31,7 +31,6 @@ class Bomb {
     // Find the midpoint of the line
     var midpointX = (this.mouseCoords.x + this.startX) / 2;
     var midpointY = (this.mouseCoords.y + this.startY) / 2;
-    // console.log("Midpoint: ", midpointX, midpointY);
     // Find the vertex angle
     var hypotonuseLength =  Math.sqrt(((length / 2) * (length / 2)) + ((length / 8) * (length / 8)));
     // console.log(hypotonuseLength);
@@ -52,10 +51,10 @@ class Bomb {
     // Find starting point of tangent to the curve
     var startPointTanX = 2 * this.vertexPointX - endpointTanX;
     var startPointTanY = 2 * this.vertexPointY - endpointTanY;
-    console.log(startPointTanX, startPointTanY);
+    // console.log(startPointTanX, startPointTanY);
     // Find the first control point
-    this.controlPoints['firstControlPointX'] = (midpointX - (1 - .5) * startPointTanX) / .5;
-    this.controlPoints['firstControlPointY'] = (midpointY - (1 - .5) * startPointTanY) / .5;
+    this.controlPoints['firstControlPointX'] = (midpointX - (1 - .75) * startPointTanX) / .75;
+    this.controlPoints['firstControlPointY'] = (midpointY - (1 - .75) * startPointTanY) / .75;
     // Find the second control point
     this.controlPoints['secondControlPointX'] = (endpointTanX - (1 - .25) * midpointX) / .25;
     this.controlPoints['secondControlPointY'] = (endpointTanY - (1 - .25) * midpointY) / .25;
