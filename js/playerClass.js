@@ -60,7 +60,7 @@ class Player {
     var canvas = document.getElementById('canvas');
     canvas.addEventListener('mousemove', function(event) {
       var mousePosition = self.getMousePoition(canvas, event);
-      // console.log(mousePosition);
+      console.log(mousePosition);
     });
   }
   getMousePoition(canvas, event) {

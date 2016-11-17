@@ -31,12 +31,19 @@ class Bomb {
     // Find the midpoint of the line
     var midpointX = (this.mouseCoords.x + this.startX) / 2;
     var midpointY = (this.mouseCoords.y + this.startY) / 2;
+    console.log("Midpoints: ",midpointX, midpointY);
+    // Find the quarter point of the line
+    var quarterPointX = ((0.25 * this.mouseCoords.x) + (0.75 * this.startX));
+    var quarterPointY = ((0.25 * this.mouseCoords.y) + (0.75 * this.startY));
+    console.log("Quarter points: ",quarterPointX, quarterPointY);
+    // Find the three quarter point of the line
+    var threeQuarterPointX = ((0.75 * this.mouseCoords.x) + (0.25 * this.startX));
+    var threeQuarterPointY = ((0.75 * this.mouseCoords.y) + (0.25 * this.startY));
+    console.log("Three quarter points: ",threeQuarterPointX, threeQuarterPointY);
     // Find the vertex angle
     var hypotonuseLength =  Math.sqrt(((length / 2) * (length / 2)) + ((length / 8) * (length / 8)));
-    // console.log(hypotonuseLength);
     var vertexAngleRadians = Math.asin((length / 2) / hypotonuseLength);
     var vertexAngle =  self.toDegrees(vertexAngleRadians)
-    // console.log("Vertex angle: ", vertexAngle);
     // Find Theta angle
     var theta = 90 - vertexAngle;
     // Find the vertex coordinate points
@@ -44,6 +51,11 @@ class Bomb {
     // console.log(vertexNumberIntermediate);
     this.vertexPointX =  midpointX + (vertexNumberIntermediate * (-(this.startY - midpointY)));
     this.vertexPointY =  midpointY + (vertexNumberIntermediate * (-(this.startX - midpointX)));
+    // FInd the quarter vertex point
+    this.quarterVertexPointX =  quarterPointX + (vertexNumberIntermediate * (-(this.startY - quarterPointY)));
+    this.quarterVertexPointY =  quarterPointY + (vertexNumberIntermediate * (-(this.startX - quarterPointX)));
+    console.log(this.startX, this.startY);
+    console.log(quarterPointX, quarterPointY);
     // Find endpoint of tangent to the curve
     var endpointTanX = this.mouseCoords.x + (vertexNumberIntermediate * (-(midpointX - this.mouseCoords.x)));
     var endpointTanY = this.mouseCoords.y + (vertexNumberIntermediate * (-(midpointY - this.mouseCoords.y)));
