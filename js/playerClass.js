@@ -60,7 +60,7 @@ class Player {
     var canvas = document.getElementById('canvas');
     canvas.addEventListener('mousemove', function(event) {
       var mousePosition = self.getMousePoition(canvas, event);
-      console.log(mousePosition);
+      // console.log(mousePosition);
     });
   }
   getMousePoition(canvas, event) {
@@ -93,7 +93,7 @@ class Player {
     this.currentBombs.push(new Bomb({
       playerX: this.dirX,
       playerY: this.dirY,
-      speed: 0.01,
+      speed: 0.025,
       mouseCoords: this.lastMousePosition,
       t: 0
     }));
@@ -112,7 +112,9 @@ class Player {
   drawBombs() {
     var self = this;
     this.currentBombs.forEach(function(bomb, idx) {
-      bomb.updateBombPosition();
+      if (bomb.updateBombPosition() === false) {
+        self.currentBombs.splice(idx, 1);
+      }
     });
     return this.currentBombs;
   }
