@@ -39,7 +39,6 @@ class Bomb {
     // console.log("Vertex angle: ", vertexAngle);
     // Find Theta angle
     var theta = 90 - vertexAngle;
-    // console.log("Theta: ", theta);
     // Find the vertex coordinate points
     var vertexNumberIntermediate = Math.tan(self.toRadians(theta));
     // console.log(vertexNumberIntermediate);
