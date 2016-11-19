@@ -51,6 +51,7 @@ class Player {
     window.addEventListener('keydown', function(e) {
       var key = e.keyCode;
       if (key === 32) {
+        e.preventDefault();
         self.fire();
       }
     })
@@ -82,6 +83,9 @@ class Player {
       this.dirY += this.speed;
     }
   }
+  rotatePlayer() {
+    console.log("The rotata player function was called!")
+  }
   fire() {
     var self = this;
     // this.currentBullets.push(new Bullet({
@@ -93,7 +97,7 @@ class Player {
     this.currentBombs.push(new Bomb({
       playerX: this.dirX,
       playerY: this.dirY,
-      speed: 0.025,
+      speed: 0.035,
       mouseCoords: this.lastMousePosition,
       t: 0
     }));
