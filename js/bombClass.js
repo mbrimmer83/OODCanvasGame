@@ -23,7 +23,7 @@ class Bomb {
   }
 
   createBomb() {
-    var self = this;
+    var that = this;
     // Find the length of the line
     var vectorY = (this.mouseCoords.y - this.startY);
     var vectorX = (this.mouseCoords.x - this.startX);
@@ -40,19 +40,19 @@ class Bomb {
     // Find the vertex angle
     var hypotonuseLength =  Math.sqrt(((length / 2) * (length / 2)) + ((length / 8) * (length / 8)));
     var vertexAngleRadians = Math.asin((length / 2) / hypotonuseLength);
-    var vertexAngle =  self.toDegrees(vertexAngleRadians)
+    var vertexAngle =  that.toDegrees(vertexAngleRadians)
     // Find Theta angle
     var theta = 90 - vertexAngle;
     // Find the vertex coordinate points
-    var vertexNumberIntermediate = Math.tan(self.toRadians(theta));
+    var vertexNumberIntermediate = Math.tan(that.toRadians(theta));
     this.vertexPointX =  midpointX + (vertexNumberIntermediate * (-(this.startY - midpointY)));
     this.vertexPointY =  midpointY + (vertexNumberIntermediate * (-(this.startX - midpointX)));
     // Find the quarter vertex point
     var quarterHypotonuseLength = Math.sqrt(((length / 4) * (length / 4)) + ((length / 8) * (length / 8)));
     var quarterVertexAngleRadians = Math.asin((length / 4) / quarterHypotonuseLength);
-    var quarterVertexAngle = self.toDegrees(quarterVertexAngleRadians);
+    var quarterVertexAngle = that.toDegrees(quarterVertexAngleRadians);
     var quarterTheta = 90 - quarterVertexAngle;
-    var quarterNumberIntermediate = Math.tan(self.toRadians(quarterTheta));
+    var quarterNumberIntermediate = Math.tan(that.toRadians(quarterTheta));
     this.quarterVertexPointX =  quarterPointX + (quarterNumberIntermediate * (-(this.startY - quarterPointY)));
     this.quarterVertexPointY =  quarterPointY + (quarterNumberIntermediate * (-(this.startX - quarterPointX)));
     // Find the three quarter vertex point
