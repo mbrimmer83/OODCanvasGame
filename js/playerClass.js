@@ -32,7 +32,7 @@ class Player {
       if (key === 40 || key === 83) { // down
         that.yPosition = -1;
       }
-    });
+    }.bind(this));
     window.addEventListener('keyup', function(e) {
       var key = e.keyCode;
       if (key === 37 || key === 65) { // left
