@@ -1,3 +1,5 @@
+'use-strict'
+
 class Player {
   constructor(object) {
     this.xPosition = object.xPosition;

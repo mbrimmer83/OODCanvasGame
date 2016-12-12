@@ -1,3 +1,5 @@
+'use-strict'
+
 class Bullet {
   constructor(object) {
     this.startX = object.playerX;

@@ -1,3 +1,5 @@
+'use-strict'
+
 class Game {
   constructor(object) {
     this.background = object.backgroundUrl;

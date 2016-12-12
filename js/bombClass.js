@@ -1,3 +1,5 @@
+'use-strict'
+
 class Bomb {
   constructor(object) {
     this.startX = object.playerX;
