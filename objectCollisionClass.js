@@ -5,7 +5,7 @@ class ObjectCollision {
 
   }
 
-  proximtyDetections() {
+  proximtyDetection() {
 
   }
 }
