@@ -4,5 +4,8 @@ class ObjectCollision {
   constructor(object) {
 
   }
-  
+
+  proximtyDetections() {
+
+  }
 }
