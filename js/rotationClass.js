@@ -4,7 +4,7 @@ class RotateObject {
   constructor(object){
 
   }
-  imageRotation() {
+  imageRotation(position) {
 
   }
 }

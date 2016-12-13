@@ -4,7 +4,7 @@ class GameArea {
   constructor(object) {
 
   }
-  boundaryDetection() {
-    
+  boundaryDetection(position) {
+
   }
 }
